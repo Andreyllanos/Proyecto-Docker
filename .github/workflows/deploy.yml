@@ -38,8 +38,8 @@ jobs:
       - name: Iniciar sesión en Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERS_USER_NAME }}
-          password: ${{ secrets.DOCKERS_PASSWORD }}
+          username: ${{ secrets.DOCKER_NAME_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Construir y subir imagen
         uses: docker/build-push-action@v4
