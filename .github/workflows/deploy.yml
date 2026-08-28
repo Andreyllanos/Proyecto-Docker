@@ -70,6 +70,6 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SHH_KEY }}
           script: |
-            cd ~/DockerFlaskDesplegado
-            docker compose pull app-backend
+            cd ~/Proyecto-Docker
+            docker compose pull
             docker compose up -d
