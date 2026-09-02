@@ -10,8 +10,7 @@ services:
     expose:
       - "5050"
     depends_on:
-      servidor-bd:
-        condition: service_healthy
+      - servidor-bd
     networks:
       - red-cba
 
@@ -27,11 +26,11 @@ services:
     networks:
       - red-cba
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p${MYSQL_ROOT_PASSWORD}"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 40s
+      retries: 5
+      start_period: 30s
 
   nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
