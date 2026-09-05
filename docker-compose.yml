@@ -7,8 +7,8 @@ services:
       MYSQL_HOST: servidor-bd
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
-    expose:
-      - "5050"
+    ports:
+      - "80:5050"   # <--- Cambio clave: expone el puerto 80 directo al exterior
     depends_on:
       - servidor-bd
     networks:
@@ -32,21 +32,21 @@ services:
       retries: 5
       start_period: 30s
 
-  nginx-proxy-manager:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: nginx-proxy-manager
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "81:81"
-      - "443:443"
-    volumes:
-      - npm-data:/data
-      - npm-letsencrypt:/etc/letsencrypt
-    networks:
-      - red-cba
-    depends_on:
-      - app-backend
+  # nginx-proxy-manager:
+  #   image: jc21/nginx-proxy-manager:latest
+  #   container_name: nginx-proxy-manager
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "81:81"
+  #     - "443:443"
+  #   volumes:
+  #     - npm-data:/data
+  #     - npm-letsencrypt:/etc/letsencrypt
+  #   networks:
+  #     - red-cba
+  #   depends_on:
+  #     - app-backend
 
 volumes:
   mysql-data:

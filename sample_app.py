@@ -18,7 +18,7 @@ def home():
     except Exception as e:
         db_status = f"Error al conectar a la base de datos: {e}"
 
-    return f"<h1>Bienvenido a mi aplicación Flask</h1><p>{db_status}</p>"
+    return f"<h1>Bienvenido a mi aplicación Flask - Actualizado</h1><p>{db_status}</p>"
 
 if __name__ == "__main__":
     modo_debug = os.getenv("FLASK_DEBUG", "False").lower() == "true"
